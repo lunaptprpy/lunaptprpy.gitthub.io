@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicaragua Turística - Destinos y Rincones Históricos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        :root {
+            --primary-color: #006847; /* Verde característico de Nicaragua */
+            --secondary-color: #8CC63F;
+            --accent-color: #F7941E;
+            --light-color: #f5f5f5;
+            --dark-color: #333333;
+            --text-color: #444444;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://media.istockphoto.com/id/2198635312/photo/old-cathedral-of-managua-nicaragua-at-night.jpg?s=1024x1024&w=is&k=20&c=6OBInfIBUVlBJwN5U_hhXW2UoX2YtYAsaTUHZT_b88A=');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+        }
+
+        /* Navegación */
+        nav {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 15px 20px;
+            display: block;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://media.gettyimages.com/id/1309237474/es/foto/statue-and-dome-of-the-church-of-la-merced-with-the-church-of-xalteva-in-the-background-during.jpg?s=2048x2048&w=gi&k=20&c=nySh6TJDqBwfJ8pnHDqinhF34TB2tLjeWONEKOS0gBE=') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+        }
+
+        /* Secciones */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            margin: 15px auto;
+        }
+
+        /* Tarjetas de destinos */
+        .destinos-grid, .historicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .destino-card, .historico-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .destino-card:hover, .historico-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .destino-img img, .historico-img img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .destino-info, .historico-info {
+            padding: 20px;
+        }
+
+        .destino-info h3, .historico-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .destino-info p, .historico-info p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Galería */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Modal de la galería */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            max-height: 80vh;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: var(--white);
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--accent-color);
+        }
+
+        .caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: var(--white);
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Contacto */
+        .contact-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .contact-info {
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .footer-links {
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li a {
+                padding: 10px;
+                text-align: center;
+            }
+            
+            .destinos-grid, .historicos-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Nicaragua Turística</h1>
+            <p>Descubre los destinos más bellos y los rincones históricos de nuestro país</p>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#destinos">Destinos Turísticos</a></li>
+                <li><a href="#historicos">Rincones Históricos</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Bienvenidos a Nicaragua</h2>
+            <p>Un país lleno de belleza natural, cultura e historia</p>
+        </div>
+    </section>
+
+    <section id="destinos" class="section">
+        <div class="container">
+            <h2>Destinos Turísticos de Nicaragua</h2>
+            <div class="destinos-grid">
+                <!-- Destino 1 -->
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="https://media.istockphoto.com/id/155350183/photo/cathedral-of-granada-nicaragua.jpg?s=1024x1024&w=is&k=20&c=xPR9JyOK-1uZ9hT6kFAN-7YR6P8O8B-aIzGnpKi657c=" alt="Granada">
+                    </div>
+                    <div class="destino-info">
+                        <h3>Granada</h3>
+                        <p>La ciudad colonial más antigua de Nicaragua, conocida por su arquitectura colorida y su cercanía al Lago Cocibolca.</p>
+                        <a href="https://es.wikipedia.org/wiki/Granada_(Nicaragua)" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Destino 2 -->
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/22/5c/d8/12/cristo-de-la-misericordia.jpg?w=800&h=-1&s=1" alt="San Juan del Sur">
+                    </div>
+                    <div class="destino-info">
+                        <h3>San Juan del Sur</h3>
+                        <p>Famoso destino de playa en el Pacífico, conocido por sus hermosas playas y vibrante vida nocturna.</p>
+                        <a href="https://es.wikipedia.org/wiki/San_Juan_del_Sur" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Destino 3 -->
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="https://media.istockphoto.com/id/2185983156/photo/panorama-of-green-ometepe-island.jpg?s=1024x1024&w=is&k=20&c=oGh23_k885tp0s8Iu0rq_h_em7hc0WscBTKPtUNa2gY=" alt="Isla de Ometepe">
+                    </div>
+                    <div class="destino-info">
+                        <h3>Isla de Ometepe</h3>
+                        <p>Isla formada por dos volcanes en el Lago Cocibolca, rica en arqueología y naturaleza.</p>
+                        <a href="https://es.wikipedia.org/wiki/Isla_de_Ometepe" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Destino 4 -->
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="https://media.istockphoto.com/id/2148314111/photo/view-of-the-caribbeans-little-corn-island.jpg?s=1024x1024&w=is&k=20&c=bZklqZrPLPVGR8YBLHo3q1QvI8wTWJkh_AZefQLYSB8=" alt="Corn Islands">
+                    </div>
+                    <div class="destino-info">
+                        <h3>Corn Islands</h3>
+                        <p>Paraíso caribeño con playas de arena blanca y aguas cristalinas, ideal para bucear y relajarse.</p>
+                        <a href="https://es.wikipedia.org/wiki/Islas_del_Ma%C3%ADz" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Destino 5 -->
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="https://www.marena.gob.ni/wp-content/uploads/2023/02/IMG-20230204-WA0011-768x543.jpg" alt="Volcán masaya">
+                    </div>
+                    <div class="destino-info">
+                        <h3>Volcan Masaya</h3>
+                        <p>Uno de los volcanes más accesibles del país, con un cráter activo y centro de visitantes.</p>
+                        <a href="https://es.wikipedia.org/wiki/Parque_Nacional_Volc%C3%A1n_Masaya" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Destino 6 -->
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="https://media.istockphoto.com/id/1219187820/es/foto/reserva-natural-miraflor-esteli-nicaragua.jpg?s=1024x1024&w=is&k=20&c=bzrpiYvd38hiIqWBW5fNFEYrbvYZkPmAInxQpJbDnfM=" alt="Mira flor">
+                    </div>
+                    <div class="destino-info">
+                        <h3>Mira Flor</h3>
+                        <p>Área protegida en Estelí con ecosistemas variados, perfecta para ecoturismo, observación de aves y café orgánico.</p>
+                        <a href=" https://es.wikipedia.org/wiki/Reserva_natural_Miraflor" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Destino 7 -->
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0a/36/7c/8f/estancia-en-selva-negra.jpg?w=800&h=-1&s=1" alt="Selva negra">
+                    </div>
+                    <div class="destino-info">
+                        <h3>Selva Negra</h3>
+                        <p>Eco-lodge y reserva forestal en las montañas de Matagalpa, con cafetales, senderos y alojamiento ecológico.</p>
+                        <a href="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tripadvisor.es%2FHotel_Review-g612407-d567919-Reviews-Selva_Negra_Mountain_Resort-Matagalpa_Matagalpa_Department.html&psig=AOvVaw3jPt2wQTGA0YAmo6C_XTPV&ust=1753045991629000&source=images&cd=vfe&opi=89978449&ved=0CBgQjhxqFwoTCLC57bPryY4DFQAAAAAdAAAAABAE" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Destino 8 -->
+                <div class="destino-card">
+                    <div class="destino-img">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/79/57/bd/photo0jpg.jpg?w=1000&h=-1&s=1" alt="Laguna de apoyo">
+                    </div>
+                    <div class="destino-info">
+                        <h3>Laguna de Apoyo</h3>
+                        <p>Laguna cratérica entre Masaya y Granada, ideal para nadar, relajarse o hacer kayak.</p>
+                        <a href="https://es.wikipedia.org/wiki/Laguna_de_Apoyo" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="historicos" class="section">
+        <div class="container">
+            <h2>Rincones Históricos de Nicaragua</h2>
+            <div class="historicos-grid">
+                <!-- Lugar histórico 1 -->
+                <div class="historico-card">
+                    <div class="historico-img">
+                        <img src="https://media.istockphoto.com/id/1271221855/photo/brick-walls-at-the-ruins-of-old-leon-nicaragua.jpg?s=1024x1024&w=is&k=20&c=LCdTh8jYTR8J66Y9fgl-_iIfj-f4NXos4mFbEgMLoAM=" alt="León Viejo">
+                    </div>
+                    <div class="historico-info">
+                        <h3>León Viejo</h3>
+                        <p>Ruinas de la primera capital de Nicaragua, declarada Patrimonio de la Humanidad por la UNESCO.</p>
+                        <a href="https://es.wikipedia.org/wiki/Le%C3%B3n_Viejo" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Lugar histórico 2 -->
+                <div class="historico-card">
+                    <div class="historico-img">
+                        <img src="https://media.istockphoto.com/id/93175500/photo/leon-cathedral-nicaragua.jpg?s=1024x1024&w=is&k=20&c=j2s3BEkBX-RPrbKjFwEwx6cAgCpOzWwb7vwL4XpTruU=" alt="Catedral de León">
+                    </div>
+                    <div class="historico-info">
+                        <h3>Catedral de León</h3>
+                        <p>Patrimonio de la Humanidad, es la catedral más grande de Centroamérica y alberga los restos de Rubén Darío.</p>
+                        <a href="https://es.wikipedia.org/wiki/Catedral_de_Le%C3%B3n_(Nicaragua)" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Lugar histórico 3 -->
+                <div class="historico-card">
+                    <div class="historico-img">
+                        <img src="https://media.istockphoto.com/id/2215836083/photo/la-polvora-fortress-in-granada-nicaragua.jpg?s=1024x1024&w=is&k=20&c=u8EAg8CHmVe-UHwuyUZzIasTmJUfAPmqPVjFwoGZTyM=" alt="El Fortín de Granada">
+                    </div>
+                    <div class="historico-info">
+                        <h3>El Fortín de Granada</h3>
+                        <p>Antigua fortaleza militar con vista panorámica de la ciudad de Granada y el Lago Cocibolca.</p>
+                        <a href="https://es.wikipedia.org/wiki/Fort%C3%ADn_de_Granada" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+
+                <!-- Lugar histórico 4 -->
+                <div class="historico-card">
+                    <div class="historico-img">
+                        <img src="https://www.mapanicaragua.com/wp-content/uploads/2020/06/museo-ruben-dario-nicaragua-600x400.jpg" alt="Casa Museo Rubén Darío">
+                    </div>
+                    <div class="historico-info">
+                        <h3>Casa Museo Rubén Darío</h3>
+                        <p>Museo dedicado al Príncipe de las Letras Castellanas, ubicado en la ciudad de León.</p>
+                        <a href="https://es.wikipedia.org/wiki/Museo_Rub%C3%A9n_Dar%C3%ADo" class="btn" target="_blank">Más información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="galeria" class="section">
+        <div class="container">
+            <h2>Galería de Imágenes</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://media.istockphoto.com/id/931333028/photo/granada-cathedral-and-city-panorama.jpg?s=1024x1024&w=is&k=20&c=93BT3hK6njkUm-Yb3IJcscGwCIRTQeU43RHL_8Z2jYs=" alt="Granada de noche" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.istockphoto.com/id/1589972679/photo/jesus-christ-church-in-san-juan-del-sur.jpg?s=1024x1024&w=is&k=20&c=d0y9hHTXC2j4dm-m3jaTUL1Qx04XI-5dNtjr_ne8hlI=" alt="Playa en San Juan del Sur" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.istockphoto.com/id/616092516/photo/concepcion-volcano.jpg?s=1024x1024&w=is&k=20&c=RoPQVW14_cKmukdxyq36nbAQb-qNmf7dNsKp5NyFi1c=" alt="Volcán Concepción en Ometepe" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.istockphoto.com/id/2148314133/photo/view-of-the-caribbeans-little-corn-island.jpg?s=1024x1024&w=is&k=20&c=TciHhgT9A6_nk4pFsVSFQV0tY_9CepQRkFbJxCjNVC0=" alt="Playa en Corn Island" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.istockphoto.com/id/122178252/photo/cathedral-in-leon-nicaragua.jpg?s=1024x1024&w=is&k=20&c=c6WxIRg_3d83HjTZHkpNFP7QCiIE1-rltb3y1uoH_nc=" alt="Catedral de León" onclick="openModal(this)">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://media.istockphoto.com/id/520015124/photo/city-night-lights.jpg?s=1024x1024&w=is&k=20&c=SXuVVwQ4GRr_nC5m2Z7CYiIoi5pcfO6VhV9t9PDtMDk=" alt="Managua de noche" onclick="openModal(this)">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para la galería -->
+    <div id="galleryModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div class="caption" id="caption"></div>
+    </div>
+
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>¿Tienes preguntas o quieres más información sobre los destinos turísticos de Nicaragua?</p>
+            
+            <div class="contact-methods">
+                <div class="contact-info">
+                    <h3>Encuéntranos en:</h3>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/turismo_nicaragua" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/50589454310" target="_blank" title="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="mailto:info@nicaraguaturistica.com" title="Correo electrónico">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Tu email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Tu mensaje" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Nicaragua Turística. Todos los derechos reservados.</p>
+            <div class="footer-links">
+                <a href="#">Política de Privacidad</a> | 
+                <a href="#">Términos de Servicio</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para el modal de la galería
+        function openModal(img) {
+            const modal = document.getElementById('galleryModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('caption');
+            
+            modal.style.display = "block";
+            modalImg.src = img.src;
+            captionText.innerHTML = img.alt;
+        }
+
+        function closeModal() {
+            document.getElementById('galleryModal').style.display = "none";
+        }
+
+        // Cerrar modal al hacer clic fuera de la imagen
+        window.onclick = function(event) {
+            const modal = document.getElementById('galleryModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Formulario de contacto
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí puedes agregar código para enviar el formulario
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            console.log('Formulario enviado:', { name, email, message });
+            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+            
+            // Limpiar el formulario
+            this.reset();
+        });
+
+        // Cambiar imagen de fondo del header aleatoriamente
+        function changeHeaderBackground() {
+            const backgrounds = [
+                'https://media.istockphoto.com/id/2198635312/photo/old-cathedral-of-managua-nicaragua-at-night.jpg?s=1024x1024&w=is&k=20&c=6OBInfIBUVlBJwN5U_hhXW2UoX2YtYAsaTUHZT_b88A=',
+                'https://media.istockphoto.com/id/2198635312/photo/old-cathedral-of-managua-nicaragua-at-night.jpg?s=1024x1024&w=is&k=20&c=6OBInfIBUVlBJwN5U_hhXW2UoX2YtYAsaTUHZT_b88A=',
+                'https://media.istockphoto.com/id/2198635312/photo/old-cathedral-of-managua-nicaragua-at-night.jpg?s=1024x1024&w=is&k=20&c=6OBInfIBUVlBJwN5U_hhXW2UoX2YtYAsaTUHZT_b88A='
+            ];
+            
+            const randomBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+            document.querySelector('header').style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('${randomBg}')`;
+        }
+
+        // Cambiar fondo cada 10 segundos (opcional)
+        // setInterval(changeHeaderBackground, 10000);
+
+        // Efecto smooth scroll para los enlaces del menú
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
